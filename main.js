@@ -1,25 +1,96 @@
-var button = document.querySelector("#searchbutton")
+const button = document.querySelector("#searchbutton")
+const searchBar = document.querySelector("#searchbar");
+const player = document.querySelector("#audio-controls");
+const music = document.querySelector('#music-bar')
+
+function artistNode (artist) {
+    const artistDiv = document.createElement('div')
+    artistDiv.classList
+    artistDiv.innerHTML = `
+    <div class='artist-results'>
+      <img src="${artist.artworkUrl100}" class="artist-image">
+      <h3>${artist.artistName}</h3>
+      <p class='track'>Song: ${artist.trackName}</p>
+      <input class="playback" id="playback" type="button" src="${artist.previewUrl}" value="Play" onclick="play('${artist.previewUrl}')">
+    </div>`
+    return artistDiv
+  }
+
+
 
 button.addEventListener('click', function (event) {
     event.preventDefault()
-    fetch('https://itunes-api-proxy.glitch.me/search?term=johnny+cash&media=music&entity=musicTrack&trackID=251002253')
-        .then(function (response) {
-        return response.json()
-    })
-    .then(function (data) {
-        results = data.results
-        console.log(results)
-        console.log(results[0])
-        console.log(results[0].previewUrl)
-        console.log(results[0].trackName)
-        console.log(results[0].artistName)
-        document.getElementById('music-bar').src = results[0].previewUrl
-        console.log(document.getElementById('music-bar').src)
-        document.getElementById('audio-controls').load()
-        console.log(document.getElementById('audio-controls'))        
-        
-    })
+    let searchTerm = document.querySelector('#bar').value
+    let url = `https://itunes-api-proxy.glitch.me/search?term=${encodeURIComponent(searchTerm)}&&entity=song`
+    console.log(url)
+    const resultsDiv = document.querySelector('#artist-results')
+
+    fetch(url)
+        .then(response => response.json())
+        .then(function(data) {
+            console.log(data)
+            resultsDiv.innerHTML = ''
+            results = data.results
+            for (let artist of results) {
+                resultsDiv.appendChild(artistNode(artist))
+            }
+        })
 })
+
+function play(source) {
+    music.src = source
+    player.load()
+    player.play()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function displayArtistData (planetUrl) {
+//     fetch(planetUrl)
+//       .then(res => res.json())
+//       .then(function (data) {
+//         const dataDisplay = q('#artist-data')
+//         dataDisplay.innerHTML = `
+//           <h3>More info about ${results.artistName}</h3>
+//           <dl>
+//             <dt>Artist</dt>
+//             <dd>${results.artistName}</dd>
+//           </dl>
+//         `
+//       })
+//   }
+
+
+
+
+// .then(function (data) {
+//     results = data.results
+//     document.getElementById('music-bar').src = results[0].previewUrl
+//     document.getElementById('audio-controls').load()
+
+
+
+
 
 
 // console.log(results[0].previewUrl, results[0].trackName, results[0].artistName)
@@ -29,7 +100,10 @@ button.addEventListener('click', function (event) {
 
 
 
-
+        // const applyFilter = document.querySelector("#filter");
+        // const enterButton = document.querySelector("#doSearch");
+        // const resultArea = document.querySelector("#resultArea");
+        // const spinner = document.querySelector('#spinner');
 
 
 
