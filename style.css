@@ -1,11 +1,12 @@
-html {
-    /* background-image: url('https://carleton.ca/music/wp-content/uploads/Piano-keys-banner.jpg') */
+.flex {
+	background-color: blue;
 }
-
 #heading {
     text-align: center;
-	 color: rgb(169, 174, 211);
-    color: #6785aa;
+	color: rgb(169, 174, 211);
+	color: #6785aa;
+	padding-top: 50px;
+
 }
 
 #searchbar {
@@ -15,7 +16,9 @@ html {
 
 
 #audiofigure {
-    text-align: center;
+	text-align: center;
+	margin-top: 75px;
+
 }
 
 
@@ -127,21 +130,32 @@ html {
     color: #6785aa;
 }
 
-.artist-node {
+.artist-results {
     padding-left: 100px;
     float:left;
     width: 200px;
     height:200px;
-    margin-bottom: 50px;
+	margin-bottom: 50px;
+
 }
 
 .track {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 
 }
 
+.header {
+	/* background-image: url('https://cdn.pixabay.com/photo/2015/07/31/15/01/guitar-869217_1280.jpg') */
+	background-image: url('https://carleton.ca/music/wp-content/uploads/Piano-keys-banner.jpg');
+	background-size: cover;
+	height: 350px;
+}
 
+.playing {
+	font-family: sans-serif;
+	color: #93b7e2;
 
+}
 
 
 

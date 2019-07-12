@@ -1,7 +1,18 @@
-const button = document.querySelector("#searchbutton")
+const searchbutton = document.querySelector("#searchbutton")
 const searchBar = document.querySelector("#searchbar");
 const player = document.querySelector("#audio-controls");
 const music = document.querySelector('#music-bar')
+const playbutton = q("#playback")
+let playing = q('.playing')
+
+
+function q (sel) {
+    return document.querySelector(sel)
+  }
+
+function qs (sel) {
+    return document.querySelectorAll(sel)
+  }
 
 function artistNode (artist) {
     const artistDiv = document.createElement('div')
@@ -11,24 +22,33 @@ function artistNode (artist) {
       <img src="${artist.artworkUrl100}" class="artist-image">
       <h3>${artist.artistName}</h3>
       <p class='track'>Song: ${artist.trackName}</p>
-      <input class="playback" id="playback" type="button" src="${artist.previewUrl}" value="Play" onclick="play('${artist.previewUrl}')">
+      <input data-track="${artist.trackName}" class="playback" id="playback" type="button" src="${artist.previewUrl}" value="Play">
     </div>`
     return artistDiv
   }
 
+/*
+function songNode (artist) {
+    const songDiv = document.createElement('div')
+    artistDiv.classList
+    artistDiv.innerHTML = `
+    <div class='artist-results'>
+    <p class='track'>Now Playing: ${artist.trackName} by ${artist.trackName}NewNode</p></div>`
+
+    return songDiv
+}
+*/
 
 
-button.addEventListener('click', function (event) {
+searchbutton.addEventListener('click', function (event) {
     event.preventDefault()
     let searchTerm = document.querySelector('#bar').value
     let url = `https://itunes-api-proxy.glitch.me/search?term=${encodeURIComponent(searchTerm)}&&entity=song`
-    console.log(url)
     const resultsDiv = document.querySelector('#artist-results')
 
     fetch(url)
         .then(response => response.json())
         .then(function(data) {
-            console.log(data)
             resultsDiv.innerHTML = ''
             results = data.results
             for (let artist of results) {
@@ -37,11 +57,30 @@ button.addEventListener('click', function (event) {
         })
 })
 
-function play(source) {
-    music.src = source
-    player.load()
-    player.play()
-}
+/*
+playbutton.addEventListener('click', function(event) {
+    const resultsDiv = document.querySelector('#artist-results')
+    let results = data.results
+    for (let artist of results) {
+        resultsDiv.appendChild(songNode(artist))
+    }
+})
+*/
+
+q('#artist-results').addEventListener('click', function(event) {
+    if (event.target && event.target.matches('#playback')) {
+        music.src = event.target.src
+        player.load()
+        player.play()
+        let newEl = document.createElement('p')
+        newEl.classList.add('playing')
+        newEl.innerHTML = event.target.dataset['track']
+        playing.parentNode.replaceChild(newEl, playing)
+        playing = q('.playing')
+    }
+})
+
+
 
 
 
