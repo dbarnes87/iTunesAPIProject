@@ -1,6 +1,7 @@
-.flex {
-	background-color: blue;
+body {
+	background-color: rgba(224, 236, 247, 0.966)
 }
+
 #heading {
     text-align: center;
 	color: rgb(169, 174, 211);
@@ -136,6 +137,8 @@
     width: 200px;
     height:200px;
 	margin-bottom: 50px;
+	color: rgb(87, 83, 83);
+	font-family: sans-serif;
 
 }
 
