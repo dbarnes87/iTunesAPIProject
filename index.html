@@ -23,12 +23,22 @@
     </figure>
 </div>
     <hr>
-
-    <form>
+<div id='searchContainer'>
+            <fieldset>
+               <p>
+                  <label></label>
+                  <select id = "searchBy">
+                        <option value='&attribute=artistTerm'>Artist</option>
+                        <option value='&attribute=songTerm'>Song Title</option>
+                        <option value='&attribute=albumTerm'>Album Title</option>
+                  </select>
+               </p>
+            </fieldset>
+         </form>
         <div id='searchbar'><input placeholder='Search by artist or band...' id='bar'>&nbsp;&nbsp;<button class='get-artist-data' type='text' id='searchbutton'>Search</button></div>
 
     </form>
-
+</div>
     <hr>
 
     <h2 id='results'>Search Results:</h2>

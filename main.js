@@ -4,7 +4,7 @@ const player = document.querySelector("#audio-controls");
 const music = document.querySelector('#music-bar')
 const playbutton = q("#playback")
 let playing = q('.playing')
-
+let searchBy = q("#searchBy")
 
 function q (sel) {
     return document.querySelector(sel)
@@ -43,7 +43,7 @@ function songNode (artist) {
 searchbutton.addEventListener('click', function (event) {
     event.preventDefault()
     let searchTerm = document.querySelector('#bar').value
-    let url = `https://itunes-api-proxy.glitch.me/search?term=${encodeURIComponent(searchTerm)}&&entity=song`
+    let url = `https://itunes-api-proxy.glitch.me/search?term=${encodeURIComponent(searchTerm)}&limit=25&media=music${searchBy.value}`
     const resultsDiv = document.querySelector('#artist-results')
 
     fetch(url)
@@ -83,10 +83,10 @@ q('#artist-results').addEventListener('click', function(event) {
 
 
 
+/*
+`https://itunes-api-proxy.glitch.me/search?term=${encodeURIComponent(searchTerm)}&&entity=song`
 
-
-
-
+*/
 
 
 
