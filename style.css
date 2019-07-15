@@ -7,6 +7,9 @@ body {
 	color: rgb(169, 174, 211);
 	color: #6785aa;
 	padding-top: 50px;
+	font-family: 'Allerta Stencil', sans-serif;
+	font-size: 50px;
+
 
 }
 
@@ -62,7 +65,8 @@ body {
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+	/* font-family:Arial; */
+	font-family: 'Allerta Stencil', sans-serif;
 	font-size:13px;
 	font-weight:bold;
 	padding:6px 12px;
@@ -103,7 +107,8 @@ body {
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
+	/* font-family:Arial; */
+	font-family: 'Allerta Stencil', sans-serif;
 	font-size:13px;
 	font-weight:bold;
 	padding:6px 12px;
@@ -128,7 +133,8 @@ body {
 }
 
 #results {
-    color: #6785aa;
+	color: #6785aa;
+	font-family: 'Allerta Stencil', sans-serif;
 }
 
 .artist-results {
@@ -136,9 +142,9 @@ body {
     float:left;
     width: 200px;
     height:200px;
-	margin-bottom: 50px;
+	margin-bottom: 100px;
 	color: rgb(87, 83, 83);
-	font-family: sans-serif;
+	font-family: 'Allerta Stencil', sans-serif;
 
 }
 
@@ -155,7 +161,7 @@ body {
 }
 
 .playing {
-	font-family: sans-serif;
+	font-family: 'Allerta Stencil', sans-serif;
 	color: #93b7e2;
 
 }
